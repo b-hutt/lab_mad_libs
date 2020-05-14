@@ -39,7 +39,22 @@ def greet_person():
 
     return render_template("compliment.html",
                            person=player,
-                           compliment=compliment)
+                           compliments=compliment)
+
+
+@app.route('/game')
+def show_madlib_form():
+    """Collect users response"""
+
+    user_choice = request.args.get('choice')
+
+    if user_choice == "yes":
+        return render_template("game.html")
+
+
+    if user_choice == "no":
+        return render_template("goodbye.html")
+  
 
 
 if __name__ == '__main__':
